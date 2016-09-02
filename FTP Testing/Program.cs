@@ -7,13 +7,14 @@ using System.Text;
 
 namespace FTPTesting {
     internal static class Program {
-        private const string User = "Robert";
+        //private const string User = "Robert";
+        private static readonly string DekstopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         private static void Main(string[] args) {
             var webRequest = WebRequest.Create(new Uri("Address"));
             webRequest.Credentials = new NetworkCredential("name", "pass");
 
-            var source = new StreamReader("C://Users/" + User + "/Desktop/fooBar.txt");
+            var source = new StreamReader($"{DekstopPath}/fooBar.txt");
 
             //Upload
             webRequest.Method = WebRequestMethods.Ftp.UploadFile;
